@@ -19,5 +19,9 @@ public class BookService {
 		return bookRepository.getAllMyBook();
 		
 	}
+	
+	public MyBook findBookById(Long bookId) {
+		return bookRepository.findBookById(bookId);
+	}
 
 }
