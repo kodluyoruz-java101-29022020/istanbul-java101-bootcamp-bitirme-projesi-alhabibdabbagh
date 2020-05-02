@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,8 +19,8 @@ public class MyBook implements Serializable {
 	private static final long serialVersionUID = -1820202428300464564L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "book_id")
-	@GeneratedValue
 	private Long bookId;
 	
 	@Column(name = "book_name")

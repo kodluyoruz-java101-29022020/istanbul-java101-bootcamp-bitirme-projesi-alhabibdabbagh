@@ -2,8 +2,6 @@ package com.spring.boot.application.service.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-
 public class BookContext implements Serializable {
 
 

@@ -28,4 +28,9 @@ public interface BookRepository extends CrudRepository<MyBook, Long> {
 //	@MethodRunningTime(timeCalculation = false)
 	@Query(value = "SELECT MAX(k.bookId) FROM MyBook k")
 	public Long findMaxBookId();
+	
+	public List<MyBook> findAllByOrderByBookNameAsc();
+	
+	
+	
 }

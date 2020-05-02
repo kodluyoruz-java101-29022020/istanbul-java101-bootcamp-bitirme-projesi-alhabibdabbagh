@@ -13,25 +13,26 @@ import com.spring.boot.application.service.model.BookContext;
 
 @Service
 public class BookService {
-	
+
 	@Autowired
 	private BookRepository bookRepository;
-	
-	public List<MyBook> getAllMyBook(){
-		
+
+	public List<MyBook> getAllMyBook() {
+
 		return bookRepository.getAllMyBook();
-		
+
 	}
-	
+
 	public MyBook findBookById(Long bookId) {
 		return bookRepository.findBookById(bookId);
 	}
+
 	@Transactional
 	public Long save(BookContext bookContext) {// MyBook
-		
-		Long maxId=bookRepository.findMaxBookId()+1;
-		
-		MyBook myBook=new MyBook();
+
+		Long maxId = bookRepository.findMaxBookId() + 1;
+
+		MyBook myBook = new MyBook();
 		myBook.setBookId(maxId);
 		myBook.setBookName(bookContext.getBookName());
 		myBook.setAuthorName(bookContext.getAuthorName());
@@ -47,11 +48,17 @@ public class BookService {
 //		myBook.setAuthorName(bookContext.getAuthorName());
 //		myBook.setCategory(bookContext.getCategory());
 //		myBook.setPrice(bookContext.getPrice());
-		myBook=bookRepository.save(myBook);
-		
+		myBook = bookRepository.save(myBook);
+
 		return myBook.getBookId();
-		
+
+	}
+
+	public void save(MyBook myBook) {
+		bookRepository.save(myBook);
+	}
+	public List<MyBook> findAllByOrderByBookNameAsc(){
+		return bookRepository.findAllByOrderByBookNameAsc();
 	}
 	
-
 }
