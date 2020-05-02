@@ -8,7 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.spring.boot.annotation.MethodRunningTime;
 import com.spring.boot.application.dao.entity.MyBook;
 
 
@@ -20,13 +19,13 @@ public interface BookRepository extends CrudRepository<MyBook, Long> {
 	public List<MyBook> getAllMyBook();
 	
 	
-	@MethodRunningTime(timeCalculation = true)
+//	@MethodRunningTime(timeCalculation = true)
 	@Query(value = "SELECT b FROM MyBook b WHERE b.bookId=:bookId")
 	public MyBook findBookById(@Param("bookId") Long bookId); // param kutuphanesi dikkat 
 	
 	
-	
-	@MethodRunningTime(timeCalculation = false)
+//	
+//	@MethodRunningTime(timeCalculation = false)
 	@Query(value = "SELECT MAX(k.bookId) FROM MyBook k")
 	public Long findMaxBookId();
 }

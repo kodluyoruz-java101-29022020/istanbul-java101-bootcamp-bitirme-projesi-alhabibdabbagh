@@ -31,22 +31,22 @@ public class BookService {
 		
 		Long maxId=bookRepository.findMaxBookId()+1;
 		
-//		MyBook myBook=new MyBook();
-//		myBook.setBookId(maxId);
-//		myBook.setBookName(bookContext.getBookName());
-//		myBook.setAuthorName(bookContext.getAuthorName());
-//		myBook.setCategory(bookContext.getCategory());
-//		myBook.setPrice(bookContext.getPrice());
-		bookContext.setAuthorName("serdar");
-		bookContext.setBookName("dunya");
-		bookContext.setCategory("belgesel");
-		bookContext.setPrice(15L);
 		MyBook myBook=new MyBook();
 		myBook.setBookId(maxId);
 		myBook.setBookName(bookContext.getBookName());
 		myBook.setAuthorName(bookContext.getAuthorName());
 		myBook.setCategory(bookContext.getCategory());
 		myBook.setPrice(bookContext.getPrice());
+//		bookContext.setAuthorName("serdar");
+//		bookContext.setBookName("dunya");
+//		bookContext.setCategory("belgesel");
+//		bookContext.setPrice(15L);
+//		MyBook myBook=new MyBook();
+//		myBook.setBookId(maxId);
+//		myBook.setBookName(bookContext.getBookName());
+//		myBook.setAuthorName(bookContext.getAuthorName());
+//		myBook.setCategory(bookContext.getCategory());
+//		myBook.setPrice(bookContext.getPrice());
 		myBook=bookRepository.save(myBook);
 		
 		return myBook.getBookId();

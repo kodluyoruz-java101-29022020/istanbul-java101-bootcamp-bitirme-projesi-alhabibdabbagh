@@ -1,0 +1,41 @@
+
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Employee Directory</title>
+</head>
+
+<body>
+
+	<h3>Employee Directory</h3>
+	<hr>
+	
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>BookName</th>
+				<th>Category</th>
+				<th>AutherName</th>
+				<th>Price</th>
+
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="MyBook : ${books}">
+				<td th:text="${MyBook.bookId}"></td>
+				<td th:text="${MyBook.bookName}"></td>
+				<td th:text="${MyBook.category}"></td>
+				<td th:text="${MyBook.autherName}"></td>
+				<td th:text="${MyBook.price}"></td>
+
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+	
+</body>
+</html>
