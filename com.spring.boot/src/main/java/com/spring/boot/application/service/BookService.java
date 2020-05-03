@@ -64,6 +64,19 @@ public class BookService {
 		bookRepository.deleteById(bookId);
 		 
 	}
+public List<MyBook> searchBy(String theName) {
+		
+		List<MyBook> results = null;
+		
+		if (theName != null && (theName.trim().length() > 0)) {
+			results = bookRepository.findByBookNameContainsAllIgnoreCase(theName);
+		}
+		else {
+			results = findAllByOrderByBookNameAsc();
+		}
+		
+		return results;
+	}
 
 	
 }

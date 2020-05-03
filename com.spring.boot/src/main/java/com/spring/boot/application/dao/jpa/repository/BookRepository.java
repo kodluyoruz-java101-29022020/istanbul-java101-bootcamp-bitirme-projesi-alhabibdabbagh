@@ -34,6 +34,7 @@ public interface BookRepository extends CrudRepository<MyBook, Long> {
 //	@Query(value ="SELECT b FROM MyBook b WHERE b.bookId=:bookId")
 //	public List<MyBook> delete(@RequestParam("bookId") Long bookId);// burda @requestParam degil @param olur 
 	
-	
+	@Query (value = "SELECT b FROM MyBook b WHERE b.bookName=:bookName")
+	public List<MyBook> findByBookNameContainsAllIgnoreCase(@Param("bookName")String bookName);
 	
 }

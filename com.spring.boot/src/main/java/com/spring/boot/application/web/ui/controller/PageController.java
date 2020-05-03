@@ -84,5 +84,23 @@ public class PageController {
 		bookService.save(myBook);
 		return "redirect:/web/book/list";
 	}
+	@GetMapping("/search")
+	public String delete(@RequestParam("bookName") String theName,
+						 Model theModel) {
+		
+		// delete the employee
+		List<MyBook> theBook = bookService.searchBy(theName);
+		
+		// add to the spring model
+		theModel.addAttribute("books", theBook);
+		
+		// send to /employees/list
+		return "books/thymeleaf_Book_listem";
+		
+	}
+	
+
+
+	
 
 }
