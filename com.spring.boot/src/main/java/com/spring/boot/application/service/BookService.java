@@ -60,5 +60,10 @@ public class BookService {
 	public List<MyBook> findAllByOrderByBookNameAsc(){
 		return bookRepository.findAllByOrderByBookNameAsc();
 	}
+	public void delete(Long bookId) {
+		bookRepository.deleteById(bookId);
+		 
+	}
+
 	
 }

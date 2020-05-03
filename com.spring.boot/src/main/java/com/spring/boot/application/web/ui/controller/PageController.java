@@ -27,6 +27,7 @@ public class PageController {
 	@RequestMapping(value = "/book/list", method = RequestMethod.GET)
 	public String getAllMyBooks(Model model) {
 		List<MyBook> books = bookService.getAllMyBook();
+		books =bookService.findAllByOrderByBookNameAsc();
 		model.addAttribute("books", books);
 
 		return "books/thymeleaf_Book_listem";
@@ -68,6 +69,14 @@ public class PageController {
 
 		return "books/book-form.html";
 	}
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam("bookId") Long bookId,Model model) {
+	 bookService.delete(bookId);
+		
+	return "redirect:/web/book/list ";
+	}
+	
 
 	@PostMapping("/save")
 	public String savaBook(@ModelAttribute("books") MyBook myBook) {

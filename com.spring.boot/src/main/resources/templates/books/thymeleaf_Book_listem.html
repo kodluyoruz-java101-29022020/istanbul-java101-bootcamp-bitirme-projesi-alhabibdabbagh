@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -48,6 +47,11 @@
 				class="btn btn-info btn-sm">
 				Update
 				</a>
+				<a th:href="@{/web/delete(bookId=${MyBook.bookId})}"
+				class="btn btn-danger btn-sm" onclick="if (!(confirm('kitabı silmek üzersindesiniz emin misiniz?'))) return true">
+				Delete
+				</a>
+				
 				</td>
 				
 			</tr>

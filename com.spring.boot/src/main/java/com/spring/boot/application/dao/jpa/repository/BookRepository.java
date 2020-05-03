@@ -2,7 +2,6 @@ package com.spring.boot.application.dao.jpa.repository;
 
 import java.util.List;
 
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -29,7 +28,11 @@ public interface BookRepository extends CrudRepository<MyBook, Long> {
 	@Query(value = "SELECT MAX(k.bookId) FROM MyBook k")
 	public Long findMaxBookId();
 	
+	@Query(value = "SELECT b FROM MyBook b ORDER BY b.bookName ")
 	public List<MyBook> findAllByOrderByBookNameAsc();
+	
+//	@Query(value ="SELECT b FROM MyBook b WHERE b.bookId=:bookId")
+//	public List<MyBook> delete(@RequestParam("bookId") Long bookId);// burda @requestParam degil @param olur 
 	
 	
 	
