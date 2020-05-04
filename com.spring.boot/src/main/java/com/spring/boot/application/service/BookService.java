@@ -13,7 +13,7 @@ import com.spring.boot.application.dao.jpa.repository.BookRepository;
 import com.spring.boot.application.service.model.BookContext;
 
 @Service
-public class BookService {
+public class BookService  implements IBookService{
 
 	@Autowired
 	private BookRepository bookRepository;

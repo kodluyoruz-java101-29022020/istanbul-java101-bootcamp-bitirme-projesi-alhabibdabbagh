@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.boot.application.dao.entity.MyBook;
 import com.spring.boot.application.service.BookService;
+import com.spring.boot.application.service.IBookService;
 import com.spring.boot.application.service.model.BookContext;
 
 @Controller
@@ -22,7 +23,7 @@ import com.spring.boot.application.service.model.BookContext;
 public class PageController {
 
 	@Autowired
-	private BookService bookService;
+	private IBookService bookService;
 
 	@RequestMapping(value = "/book/list", method = RequestMethod.GET)
 	public String getAllMyBooks(Model model) {

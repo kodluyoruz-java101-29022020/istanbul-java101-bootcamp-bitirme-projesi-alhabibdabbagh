@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.boot.application.dao.entity.MyBook;
 import com.spring.boot.application.service.BookService;
+import com.spring.boot.application.service.IBookService;
 import com.spring.boot.application.service.model.BookContext;
 
 // postman icin  
@@ -19,7 +20,7 @@ import com.spring.boot.application.service.model.BookContext;
 public class BooksController {
 
 	@Autowired
-	private BookService bookService;
+	private IBookService bookService;
 
 	// /book/list
 	@RequestMapping(value = "/books/list", method = RequestMethod.GET)
