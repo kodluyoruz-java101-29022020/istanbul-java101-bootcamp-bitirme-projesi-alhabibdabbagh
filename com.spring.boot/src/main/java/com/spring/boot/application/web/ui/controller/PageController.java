@@ -27,7 +27,7 @@ public class PageController {
 	@RequestMapping(value = "/book/list", method = RequestMethod.GET)
 	public String getAllMyBooks(Model model) {
 		List<MyBook> books = bookService.getAllMyBook();
-		books =bookService.findAllByOrderByBookNameAsc();
+		books = bookService.findAllByOrderByBookNameAsc();
 		model.addAttribute("books", books);
 
 		return "books/thymeleaf_Book_listem";
@@ -69,38 +69,33 @@ public class PageController {
 
 		return "books/book-form.html";
 	}
-	
+
 	@GetMapping("/delete")
-	public String delete(@RequestParam("bookId") Long bookId,Model model) {
-	 bookService.delete(bookId);
-		
-	return "redirect:/web/book/list ";
+	public String delete(@RequestParam("bookId") Long bookId, Model model) {
+		bookService.delete(bookId);
+
+		return "redirect:/web/book/list ";
 	}
-	
 
 	@PostMapping("/save")
-	public String savaBook(@ModelAttribute("books") MyBook myBook) {
+	public String savaBook(@ModelAttribute("books") BookContext bookContext) {
 
-		bookService.save(myBook);
+		bookService.save(bookContext);
 		return "redirect:/web/book/list";
 	}
+
 	@GetMapping("/search")
-	public String delete(@RequestParam("bookName") String theName,
-						 Model theModel) {
-		
+	public String delete(@RequestParam("bookName") String theName, Model theModel) {
+
 		// delete the employee
 		List<MyBook> theBook = bookService.searchBy(theName);
-		
+
 		// add to the spring model
 		theModel.addAttribute("books", theBook);
-		
+
 		// send to /employees/list
 		return "books/thymeleaf_Book_listem";
-		
+
 	}
-	
-
-
-	
 
 }

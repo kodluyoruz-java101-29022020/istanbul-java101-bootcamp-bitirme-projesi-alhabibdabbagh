@@ -13,24 +13,32 @@ import com.spring.boot.application.dao.entity.MyBook;
 import com.spring.boot.application.service.BookService;
 import com.spring.boot.application.service.model.BookContext;
 
+// postman icin  
 @RestController
 @RequestMapping("/application")
 public class BooksController {
 
 	@Autowired
 	private BookService bookService;
-	
-	@RequestMapping(value = "/books/list",method=RequestMethod.GET)
-	public List<MyBook> getAllMyBook(){
+
+	// /book/list
+	@RequestMapping(value = "/books/list", method = RequestMethod.GET)
+	// book listesi getiriyor
+	public List<MyBook> getAllMyBook() {
+		// service
 		return bookService.getAllMyBook();
 	}
-	@RequestMapping(value = "/book/{bookId}",method=RequestMethod.GET)
-	public MyBook findBookById(@PathVariable ("bookId")Long bookId) {
+
+	// get book by id
+	@RequestMapping(value = "/book/{bookId}", method = RequestMethod.GET)
+	// bir tane book nesnesi donduruyor parametre bookid aliyor
+	public MyBook findBookById(@PathVariable("bookId") Long bookId) {// pathvariables
 		return bookService.findBookById(bookId);
 	}
-	@RequestMapping(value = "/book/save",method = RequestMethod.POST )
-	public Long save (@RequestBody BookContext bookContext) {// MyBook
-		return bookService.save(bookContext);
+
+	@RequestMapping(value = "/book/save", method = RequestMethod.POST)
+	public void save(@RequestBody BookContext bookContext) {// MyBook
+		bookService.save(bookContext);
 	}
-	
+
 }

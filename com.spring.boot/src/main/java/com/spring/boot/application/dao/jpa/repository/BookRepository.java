@@ -9,32 +9,31 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.boot.application.dao.entity.MyBook;
 
-
-
 @Repository
 public interface BookRepository extends CrudRepository<MyBook, Long> {
 
-	@Query(value = "SELECT b FROM MyBook b" ,nativeQuery = false)
+	@Query(value = "SELECT b FROM MyBook b", nativeQuery = false)
 	public List<MyBook> getAllMyBook();
-	
-	
+
 //	@MethodRunningTime(timeCalculation = true)
 	@Query(value = "SELECT b FROM MyBook b WHERE b.bookId=:bookId")
-	public MyBook findBookById(@Param("bookId") Long bookId); // param kutuphanesi dikkat 
-	
-	
+	public MyBook findBookById(@Param("bookId") Long bookId); // param kutuphanesi dikkat
+
 //	
 //	@MethodRunningTime(timeCalculation = false)
 	@Query(value = "SELECT MAX(k.bookId) FROM MyBook k")
 	public Long findMaxBookId();
-	
+
+	// siralama bookname gore asc yapiyor
 	@Query(value = "SELECT b FROM MyBook b ORDER BY b.bookName ")
 	public List<MyBook> findAllByOrderByBookNameAsc();
-	
+
 //	@Query(value ="SELECT b FROM MyBook b WHERE b.bookId=:bookId")
 //	public List<MyBook> delete(@RequestParam("bookId") Long bookId);// burda @requestParam degil @param olur 
-	
-	@Query (value = "SELECT b FROM MyBook b WHERE b.bookName=:bookName")
-	public List<MyBook> findByBookNameContainsAllIgnoreCase(@Param("bookName")String bookName);
-	
+
+	// HQL sorgusu kullanaarak bookname bul buyuk harf yada kucuk harflar
+	// bakmaksizin
+	@Query(value = "SELECT b FROM MyBook b WHERE b.bookName=:bookName")
+	public List<MyBook> findByBookNameContainsAllIgnoreCase(@Param("bookName") String bookName);
+
 }
